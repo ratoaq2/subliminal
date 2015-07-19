@@ -77,17 +77,6 @@ setup(name='subliminal',
           'Topic :: Multimedia :: Video'
       ],
       entry_points={
-          'subliminal.providers': [
-              'addic7ed = subliminal.providers.addic7ed:Addic7edProvider',
-              'opensubtitles = subliminal.providers.opensubtitles:OpenSubtitlesProvider',
-              'podnapisi = subliminal.providers.podnapisi:PodnapisiProvider',
-              'thesubdb = subliminal.providers.thesubdb:TheSubDBProvider',
-              'tvsubtitles = subliminal.providers.tvsubtitles:TVsubtitlesProvider'
-          ],
-          'babelfish.language_converters': [
-              'addic7ed = subliminal.converters.addic7ed:Addic7edConverter',
-              'tvsubtitles = subliminal.converters.tvsubtitles:TVsubtitlesConverter'
-          ],
           'console_scripts': [
               'subliminal = subliminal.cli:subliminal'
           ]

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import logging
 import re
 
-from babelfish import Language
+from babelfish import Language, language_converters
 from requests import Session
 
 from . import ParserBeautifulSoup, Provider, get_version
@@ -14,6 +14,7 @@ from ..subtitle import Subtitle, fix_line_ending, guess_matches, guess_propertie
 from ..video import Episode
 
 logger = logging.getLogger(__name__)
+language_converters.register('addic7ed = subliminal.converters.addic7ed:Addic7edConverter')
 
 series_year_re = re.compile('^(?P<series>[ \w]+)(?: \((?P<year>\d{4})\))?$')
 

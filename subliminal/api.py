@@ -8,6 +8,7 @@ import os.path
 import socket
 
 from babelfish import Language
+from pkg_resources import EntryPoint
 import requests
 from stevedore import ExtensionManager
 from stevedore.dispatch import DispatchExtensionManager
@@ -16,7 +17,33 @@ from .subtitle import compute_score, get_subtitle_path
 
 logger = logging.getLogger(__name__)
 
-provider_manager = ExtensionManager('subliminal.providers')
+
+class InternalExtensionManager(ExtensionManager):
+    """Add support for internal entry points to the :class:`~stevedore.extension.Extensionmanager`
+
+    Internal entry points are useful for libraries that ship their own plugins but still keep the entry point open.
+
+    All other parameters are passed onwards to the :class:`~stevedore.extension.Extensionmanager` constructor.
+
+    :param internal_entry_points: the internal providers
+    :type internal_entry_points: list of :class:`~pkg_resources.EntryPoint`
+
+    """
+    def __init__(self, namespace, internal_entry_points, **kwargs):
+        self.internal_entry_points = list(internal_entry_points)
+        super(InternalExtensionManager, self).__init__(namespace, **kwargs)
+
+    def _find_entry_points(self, namespace):
+        return self.internal_entry_points + super(InternalExtensionManager, self)._find_entry_points(namespace)
+
+
+provider_manager = InternalExtensionManager('subliminal.providers', [EntryPoint.parse(ep) for ep in (
+    'addic7ed = subliminal.providers.addic7ed:Addic7edProvider',
+    'opensubtitles = subliminal.providers.opensubtitles:OpenSubtitlesProvider',
+    'podnapisi = subliminal.providers.podnapisi:PodnapisiProvider',
+    'thesubdb = subliminal.providers.thesubdb:TheSubDBProvider',
+    'tvsubtitles = subliminal.providers.tvsubtitles:TVsubtitlesProvider'
+)])
 
 
 class ProviderPool(object):
