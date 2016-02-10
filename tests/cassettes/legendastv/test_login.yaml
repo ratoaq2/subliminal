@@ -1,0 +1,38 @@
+interactions:
+- request:
+    body: data%5BUser%5D%5Bpassword%5D=subliminal&data%5BUser%5D%5Busername%5D=subliminal&_method=POST
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['92']
+      Content-Type: [application/x-www-form-urlencoded]
+      User-Agent: [python-requests/2.7.0 CPython/2.7.10 Linux/4.2.0-27-generic]
+    method: POST
+    uri: http://legendas.tv/login
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAAwMAAAAAAAAAAAA=
+    headers:
+      accept-ranges: [bytes]
+      access-control-allow-origin: ['*']
+      age: ['0']
+      connection: [keep-alive]
+      content-encoding: [gzip]
+      content-length: ['20']
+      content-type: [text/html; charset=UTF-8]
+      date: ['Tue, 09 Feb 2016 22:35:22 GMT']
+      location: ['http://legendas.tv/']
+      set-cookie: [PHPSESSID=ccbh9a96fej242tvrl0lvqsqr0; path=/; HttpOnly, 'PHPSESSID=deleted;
+          expires=Mon, 09-Feb-2015 22:35:08 GMT; path=/', PHPSESSID=11a3smvmbnbo654o8kupahab92;
+          path=/; HttpOnly, 'PHPSESSID=deleted; expires=Mon, 09-Feb-2015 22:35:08
+          GMT; path=/', PHPSESSID=sfsavo984gkmvmr4gutee5nn43; path=/; HttpOnly]
+      vary: ['User-Agent,Accept-Encoding']
+      via: [1.1 varnish]
+      x-backend: [default_director]
+      x-cache: [MISS]
+      x-cacheable: ['YES:Forced']
+      x-varnish: ['431192087']
+    status: {code: 302, message: Found}
+version: 1
